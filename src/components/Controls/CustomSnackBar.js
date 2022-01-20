@@ -32,7 +32,7 @@ export default function CustomSnackBar(props) {
         open={open}
         autoHideDuration={6000}
         onClose={handleClose}
-        message={`${props.noOfItems} items added for printing.`}
+        message={`${props.noOfItems} item(s) added for printing.`}
         action={action}
       />
     </div>
