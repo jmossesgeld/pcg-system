@@ -12,6 +12,9 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { setIsLoggedIn } from "../store/auth";
+import { setUserPrefs } from "../store/userprefs";
 
 function Copyright(props) {
   return (
@@ -28,22 +31,36 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function SignIn(props) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const lastSession = parseInt(localStorage.getItem("lastSession"));
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
     console.log({
       email: data.get("email"),
       password: data.get("password"),
     });
     if (data.get("email") === "admin" && data.get("password") === "12345") {
+      dispatch(setIsLoggedIn(true));
+      localStorage.setItem("lastSession", Date.now());
       navigate("generate");
     } else {
       alert("Invalid username/password");
     }
   };
+
+  React.useEffect(() => {
+    if (Date.now() - lastSession < 1000 * 60 * 60 * 24) {
+      dispatch(setIsLoggedIn(true));
+      localStorage.setItem("lastSession", Date.now());
+      navigate("generate");
+    } else {
+      console.log("Last session expired. Please log in again.");
+    }
+  }, [dispatch, navigate, lastSession]);
 
   return (
     <ThemeProvider theme={theme}>
