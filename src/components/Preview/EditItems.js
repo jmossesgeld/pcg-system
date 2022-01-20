@@ -29,18 +29,16 @@ export default function EditItems() {
           </Grid>
           {cart.map((item, idx) => (
             <React.Fragment key={idx}>
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <Typography variant="body">{item.latestControl}</Typography>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <Typography variant="body">{item.currentUser}</Typography>
               </Grid>
-              <Grid item xs={2}>
-                <Button>
-                  <EditIcon />
-                </Button>
+              <Grid item xs={3}>
+                <Typography variant="body">{item.gasIssued} ltrs</Typography>
               </Grid>
-              <Grid item xs={2}>
+              <Grid item xs={3}>
                 <Button onClick={() => dispatch(removeFromCart(idx))}>
                   <DeleteIcon />
                 </Button>

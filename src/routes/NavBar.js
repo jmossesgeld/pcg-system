@@ -25,14 +25,18 @@ export default function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, ml: 2 }}>
             PHILIPPINE COAST GUARD
           </Typography>
-          <Button color="inherit" onClick={() => navigate("generate")}>
-            New Slip
-          </Button>
-          <Button color="inherit" onClick={() => navigate("preview")}>
-            Print Preview
-          </Button>
-          <EditItems />
-          <Settings />
+          {isLoggedIn && (
+            <>
+              <Button color="inherit" onClick={() => navigate("generate")}>
+                New Slip
+              </Button>
+              <Button color="inherit" onClick={() => navigate("preview")}>
+                Print Preview
+              </Button>
+              <EditItems />
+              <Settings />
+            </>
+          )}
           <Divider orientation="vertical" flexItem sx={{ ml: 2, mr: 3 }} />
           <Button
             color="inherit"

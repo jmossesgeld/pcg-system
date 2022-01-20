@@ -35,7 +35,7 @@ export default function Preview(props) {
     pages.map((page, index) => {
       return (
         <>
-          <Paper elevation={3} key={index} sx={paperStyle} id={`pdf-${index}`}>
+          <Paper elevation={5} key={index} sx={paperStyle} id={`pdf-${index}`}>
             <Grid container spacing={2}>
               {page.map((item, index) => {
                 return <PreviewItem key={index} item={item} />;

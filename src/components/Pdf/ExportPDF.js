@@ -16,7 +16,7 @@ export default function ExportPDF(props) {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, width:500, margin:"auto", mt:1 }}>
+    <Box sx={{ flexGrow: 1, width:500, margin:"auto", mt:1, mb:1 }}>
       <Button variant="contained" color="primary" fullWidth onClick={onClick}>
       🖨️ PRINT PAGE
       </Button>

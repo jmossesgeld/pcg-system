@@ -60,6 +60,22 @@ export default function PreviewItem(props) {
             </Typography>
           </Grid>
           <Grid item xs={5} sx={{ textAlign: "right" }}>
+            <Typography variant="body">OFFICIAL USER:</Typography>
+          </Grid>
+          <Grid item xs={7} sx={{ textAlign: "left" }}>
+            <Typography ml={2} variant="body" fontWeight="bold">
+              {props.item.currentUser}
+            </Typography>
+          </Grid>
+          <Grid item xs={5} sx={{ textAlign: "right" }}>
+            <Typography variant="body">OFFICIAL UNIT:</Typography>
+          </Grid>
+          <Grid item xs={7} sx={{ textAlign: "left" }}>
+            <Typography ml={2} variant="body" fontWeight="bold">
+              {props.item.currentUnit}
+            </Typography>
+          </Grid>
+          <Grid item xs={5} sx={{ textAlign: "right" }}>
             <Typography variant="body">CONTRACT:</Typography>
           </Grid>
           <Grid item xs={7} sx={{ textAlign: "left" }}>
@@ -71,7 +87,7 @@ export default function PreviewItem(props) {
             <Typography variant="body">GAS ISSUED:</Typography>
           </Grid>
           <Grid item xs={7} sx={{ textAlign: "left" }}>
-            <Typography ml={2} variant="body" fontWeight="bold">
+            <Typography ml={2} variant="body" fontWeight="bold" borderBottom={"solid"}>
               {props.item.gasIssued} LITERS
             </Typography>
           </Grid>
@@ -109,7 +125,7 @@ export default function PreviewItem(props) {
         </Grid>
       </Grid>
 
-{/* -------------------- RIGHT SIDE -------------------- */}
+      {/* -------------------- RIGHT SIDE -------------------- */}
 
       <Grid item xs={6}>
         <Grid
@@ -161,6 +177,23 @@ export default function PreviewItem(props) {
               {new Date(props.item.validUntil).toLocaleDateString()}
             </Typography>
           </Grid>
+
+          <Grid item xs={5} sx={{ textAlign: "right" }}>
+            <Typography variant="body">OFFICIAL USER:</Typography>
+          </Grid>
+          <Grid item xs={7} sx={{ textAlign: "left" }}>
+            <Typography ml={2} variant="body" fontWeight="bold">
+              {props.item.currentUser}
+            </Typography>
+          </Grid>
+          <Grid item xs={5} sx={{ textAlign: "right" }}>
+            <Typography variant="body">OFFICIAL UNIT:</Typography>
+          </Grid>
+          <Grid item xs={7} sx={{ textAlign: "left" }}>
+            <Typography ml={2} variant="body" fontWeight="bold">
+              {props.item.currentUnit}
+            </Typography>
+          </Grid>
           <Grid item xs={5} sx={{ textAlign: "right" }}>
             <Typography variant="body">CONTRACT:</Typography>
           </Grid>
@@ -173,7 +206,7 @@ export default function PreviewItem(props) {
             <Typography variant="body">GAS ISSUED:</Typography>
           </Grid>
           <Grid item xs={7} sx={{ textAlign: "left" }}>
-            <Typography ml={2} variant="body" fontWeight="bold">
+            <Typography ml={2} variant="body" fontWeight="bold" borderBottom={"solid"}>
               {props.item.gasIssued} LITERS
             </Typography>
           </Grid>
@@ -220,7 +253,6 @@ export default function PreviewItem(props) {
           <Grid item xs={12} mt={1}>
             <Typography variant="body">(PLEASE LEAVE THIS COPY WITH O/CG4)</Typography>
           </Grid>
-          
         </Grid>
       </Grid>
     </>
