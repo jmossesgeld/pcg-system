@@ -12,9 +12,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { setUserPrefs } from "../../store/userprefs";
 import { useEffect, useState } from "react";
 import Barcode from "./Barcode";
-import ExportPDF from "../Pdf/ExportPDF";
 import { useNavigate } from "react-router";
 import { addToCart } from "../../store/cart";
+import CustomSnackBar from "../Controls/CustomSnackBar";
 
 const paperStyle = {
   width: 650,
@@ -40,6 +40,11 @@ export default function NewSlip() {
     }
   });
 
+  const [openSnack, setOpenSnack] = useState(false);
+  const handleSnack = () => {
+    setOpenSnack(true);
+  };
+
   const addToPreview = () => {
     for (let i = 0; i < userprefs.qty; i++) {
       dispatch(setUserPrefs({ latestControl: userprefs.latestControl + i + 1 }));
@@ -52,6 +57,7 @@ export default function NewSlip() {
         })
       );
     }
+    handleSnack();
   };
 
   return (
@@ -60,7 +66,6 @@ export default function NewSlip() {
       <Grid container spacing={4}>
         <Grid item xs={6} sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant="h4">Generate Slip</Typography>
-          {/* <Button onClick={() => localStorage.clear()}>Clear</Button> */}
         </Grid>
         <Divider />
         <Grid item xs={6}>
@@ -196,9 +201,15 @@ export default function NewSlip() {
           <Button variant="contained" color="primary" fullWidth onClick={addToPreview}>
             Add to Print
           </Button>
+          <CustomSnackBar state={[openSnack, setOpenSnack]} noOfItems={userprefs.qty} />
         </Grid>
         <Grid item xs={6}>
-          <Button variant="contained" color="primary" fullWidth onClick={()=>navigate("/preview")}>
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            onClick={() => navigate("/preview")}
+          >
             🖨️ Print Preview
           </Button>
         </Grid>
