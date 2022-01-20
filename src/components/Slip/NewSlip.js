@@ -9,12 +9,12 @@ import {
   CssBaseline,
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { setUserPrefs } from "../store/userprefs";
+import { setUserPrefs } from "../../store/userprefs";
 import { useEffect, useState } from "react";
 import Barcode from "./Barcode";
-import ExportPDF from "./Pdf/ExportPDF";
+import ExportPDF from "../Pdf/ExportPDF";
 import { useNavigate } from "react-router";
-import { addToCart } from "../store/cart";
+import { addToCart } from "../../store/cart";
 
 const paperStyle = {
   width: 650,
@@ -58,15 +58,14 @@ export default function NewSlip() {
     <Paper elevation={2} sx={paperStyle}>
       <CssBaseline />
       <Grid container spacing={4}>
-        <Grid item xs={12} sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Grid item xs={6} sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant="h4">Generate Slip</Typography>
-          <Button onClick={() => localStorage.clear()}>Clear</Button>
+          {/* <Button onClick={() => localStorage.clear()}>Clear</Button> */}
         </Grid>
         <Divider />
         <Grid item xs={6}>
           <TextField label="Control No." fullWidth value={userprefs.latestControl + 1} />
         </Grid>
-        <Grid item xs={6}></Grid>
         <Grid item xs={6}>
           <TextField
             type="date"

@@ -1,7 +1,7 @@
 import { Box } from "@mui/system";
 import { Grid, Typography } from "@mui/material";
 import logo from "../Pdf/logo.png";
-import Barcode from "../Barcode";
+import Barcode from "../Slip/Barcode";
 
 const gridStyle = { display: "flex", justifyContent: "center" };
 

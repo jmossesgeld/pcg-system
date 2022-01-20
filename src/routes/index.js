@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import SignIn from "../auth/SignIn";
-import NewSlip from "../components/NewSlip";
+import NewSlip from "../components/Slip/NewSlip";
 import NavBar from "./NavBar";
 import Preview from "../components/Preview/Preview";
 

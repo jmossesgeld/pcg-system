@@ -9,6 +9,8 @@ import { useNavigate } from "react-router";
 import { Divider } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsLoggedIn } from "../store/auth";
+import Settings from "../components/Controls/Settings";
+import EditItems from "../components/Preview/EditItems";
 
 export default function ButtonAppBar() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -29,6 +31,8 @@ export default function ButtonAppBar() {
           <Button color="inherit" onClick={() => navigate("preview")}>
             Print Preview
           </Button>
+          <EditItems />
+          <Settings />
           <Divider orientation="vertical" flexItem sx={{ ml: 2, mr: 3 }} />
           <Button
             color="inherit"
