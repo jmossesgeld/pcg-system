@@ -41,7 +41,17 @@ export default function NewSlip() {
   });
 
   const addToPreview = () => {
-    dispatch(addToCart({...userprefs, dateIssued, validUntil}));
+    for (let i = 0; i < userprefs.qty; i++) {
+      dispatch(setUserPrefs({ latestControl: userprefs.latestControl + i + 1 }));
+      dispatch(
+        addToCart({
+          ...userprefs,
+          latestControl: userprefs.latestControl + i,
+          dateIssued,
+          validUntil,
+        })
+      );
+    }
   };
 
   return (
@@ -148,7 +158,7 @@ export default function NewSlip() {
           <TextField
             value={userprefs.qty}
             onChange={(e) => {
-              dispatch(setUserPrefs({ qty: e.target.value }));
+              dispatch(setUserPrefs({ qty: Math.max(e.target.value, 1) }));
             }}
             type="number"
             label="QTY"
@@ -185,11 +195,13 @@ export default function NewSlip() {
         </Grid>
         <Grid item xs={6}>
           <Button variant="contained" color="primary" fullWidth onClick={addToPreview}>
-            Add to Preview
+            Add to Print
           </Button>
         </Grid>
         <Grid item xs={6}>
-          <ExportPDF />
+          <Button variant="contained" color="primary" fullWidth onClick={()=>navigate("/preview")}>
+            🖨️ Print Preview
+          </Button>
         </Grid>
       </Grid>
     </Paper>

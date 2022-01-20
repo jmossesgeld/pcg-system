@@ -100,8 +100,11 @@ export default function PreviewItem(props) {
               {props.item.approver}
             </Typography>
           </Grid>
-          <Grid item xs={12} mb={4.5}>
+          <Grid item xs={12} mb={1.5}>
             <Typography variant="body2">{props.item.approverTitle}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="caption">NO CONVERSION FROM PRODUCT TO PRODUCT</Typography>
           </Grid>
         </Grid>
       </Grid>

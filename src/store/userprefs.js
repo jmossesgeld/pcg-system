@@ -10,6 +10,7 @@ const initialState = {
   approverTitle: "DCS FOR LOGISTICS, CG-4",
   gasType: "Diesel",
   gasIssued: "20",
+  qty:"1"
 };
 
 const slice = createSlice({

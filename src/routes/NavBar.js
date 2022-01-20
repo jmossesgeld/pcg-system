@@ -24,15 +24,16 @@ export default function ButtonAppBar() {
             PHILIPPINE COAST GUARD
           </Typography>
           <Button color="inherit" onClick={() => navigate("generate")}>
-            New
+            New Slip
           </Button>
           <Button color="inherit" onClick={() => navigate("preview")}>
-            Preview
+            Print Preview
           </Button>
           <Divider orientation="vertical" flexItem sx={{ ml: 2, mr: 3 }} />
           <Button
             color="inherit"
             onClick={() => {
+              localStorage.removeItem("lastSession");
               dispatch(setIsLoggedIn(false));
               navigate("/");
             }}

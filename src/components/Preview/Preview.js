@@ -1,8 +1,18 @@
-import { Grid, Paper, Typography } from "@mui/material";
+import { Button, Grid, Paper, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import ExportPDF from "../Pdf/ExportPDF";
 import PreviewItem from "./PreviewItem";
+
+const paperStyle = {
+  display: "flex",
+  justifyContent: "center",
+  width: 1000,
+  m: "auto",
+  mt: 8,
+  p: 8,
+};
 
 export default function Preview(props) {
   const navigate = useNavigate();
@@ -21,26 +31,26 @@ export default function Preview(props) {
     }
   });
 
-  return pages.map((page, index) => {
-    return (
-      <Paper
-        elevation={3}
-        key={index}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          width: 1000,
-          m: "auto",
-          mt: 8,
-          p:8
-        }}
-      >
-        <Grid container spacing={2}>
-        {page.map((item, index) => {
-          return <PreviewItem key={index} item={item} />;
-        })}
-        </Grid>
-      </Paper>
-    );
-  });
+  return pages.length > 0 ? (
+    pages.map((page, index) => {
+      return (
+        <>
+          <Paper elevation={3} key={index} sx={paperStyle} id={`pdf-${index}`}>
+            <Grid container spacing={2}>
+              {page.map((item, index) => {
+                return <PreviewItem key={index} item={item} />;
+              })}
+            </Grid>
+          </Paper>
+          <ExportPDF idToPrint={`#pdf-${index}`} noOfItems={page.length} />
+        </>
+      );
+    })
+  ) : (
+    <Paper elevation={3} sx={paperStyle}>
+      <Typography variant="h4" fontWeight={100}>
+        No slips to print yet
+      </Typography>
+    </Paper>
+  );
 }
