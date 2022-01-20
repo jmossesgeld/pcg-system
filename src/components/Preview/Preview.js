@@ -12,6 +12,7 @@ const paperStyle = {
   m: "auto",
   mt: 8,
   p: 8,
+  border: "2px solid #e0e0e0",
 };
 
 export default function Preview(props) {
@@ -35,7 +36,7 @@ export default function Preview(props) {
     pages.map((page, index) => {
       return (
         <>
-          <Paper elevation={5} key={index} sx={paperStyle} id={`pdf-${index}`}>
+          <Paper elevation={0} key={index} sx={paperStyle} id={`pdf-${index}`}>
             <Grid container spacing={2}>
               {page.map((item, index) => {
                 return <PreviewItem key={index} item={item} />;
